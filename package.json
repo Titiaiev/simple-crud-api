@@ -1,0 +1,42 @@
+{
+  "name": "simple-crud-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.js",
+  "scripts": {
+    "start:prod": "cross-env NODE_ENV=prod node ./src/index.js",
+    "start:dev": "cross-env NODE_ENV=dev nodemon ./src/index.js",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Titiaiev/simple-crud-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Titiaiev/simple-crud-api/issues"
+  },
+  "homepage": "https://github.com/Titiaiev/simple-crud-api#readme",
+  "engines": {
+    "node": "^16.*.*"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.10",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.1",
+    "jest": "^27.3.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.1.6"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0"
+  }
+}
