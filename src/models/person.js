@@ -33,7 +33,7 @@ class Person {
   }
 
   static isValidPerson (p) {
-    console.log(p)
+    // console.log(p)
     if (
       (typeof p !== 'object') ||
       (p.name === undefined) || (typeof p.name !== 'string') ||
