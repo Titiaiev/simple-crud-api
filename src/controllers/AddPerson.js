@@ -10,10 +10,18 @@ class AddPerson extends Controller {
   }
 
   controller (body, params) {
-    if (new Person().add(body)) {
+    try {
+      const createdUser = new Person().add(body)
+      if (createdUser) {
+        return {
+          code: 201,
+          res: createdUser
+        }
+      }
+    } catch (e) {
       return {
-        code: 201,
-        res: 'done'
+        code: 400,
+        res: e.message
       }
     }
   }
