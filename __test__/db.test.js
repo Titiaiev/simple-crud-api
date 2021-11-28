@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-const { db } = require('../src/db')
+const { db } = require('../src/lib/db/index.js')
 
 describe('db.collection("users")', () => {
   let users = null
