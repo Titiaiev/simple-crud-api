@@ -22,3 +22,7 @@ const server = http.createServer(oneMoreFramework(controllers, Router))
 server.listen(PORT, () => {
   console.log(`Server start at http://localhost:${PORT}`)
 })
+
+module.exports = {
+  server
+}
