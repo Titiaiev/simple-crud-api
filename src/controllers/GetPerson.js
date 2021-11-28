@@ -10,11 +10,22 @@ class GetPerson extends Controller {
   }
 
   controller (body, params) {
-    let person = new Person().get(params.personId)
-    if (!person) person = {}
-    return {
-      code: 200,
-      res: person
+    try {
+      Person.isUUID(params.personId)
+    } catch (e) {
+      return { code: 400, res: e.message }
+    }
+    const person = new Person().get(params.personId)
+    if (!person) {
+      return {
+        code: 404,
+        res: ''
+      }
+    } else {
+      return {
+        code: 200,
+        res: person
+      }
     }
   }
 }
