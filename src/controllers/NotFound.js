@@ -1,4 +1,5 @@
 const { Controller } = require('../lib/controller/index.js')
+const { NOT_FOUND_RESPONS } = require('../lib/constants.js')
 
 class NotFound extends Controller {
   static route () {
@@ -7,11 +8,8 @@ class NotFound extends Controller {
     }
   }
 
-  controller (body, params) {
-    return {
-      code: 404,
-      res: { msg: 'Not Found' }
-    }
+  controller () {
+    return NOT_FOUND_RESPONS
   }
 }
 
