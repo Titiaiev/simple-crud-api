@@ -33,7 +33,9 @@ class Controller {
 
   reply (code, data) {
     this.res.writeHead(code, { 'Content-Type': 'application/json' })
-    this.res.end(JSON.stringify(data))
+    if (data) {
+      this.res.end(JSON.stringify(data))
+    } else this.res.end('')
   }
 
   async exec (params) {
