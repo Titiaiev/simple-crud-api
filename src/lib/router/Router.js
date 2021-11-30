@@ -1,4 +1,6 @@
+/* eslint-disable no-prototype-builtins */
 const { Tree } = require('./Tree.js')
+const { Controller } = require('../controller/index.js')
 
 /** @type {Map<Symbol, Tree>} */
 const routers = new Map()
@@ -17,6 +19,7 @@ class Router {
     const routes = [method, ...splitRoute(path)]
     const success = routers
       .get(this.id)
+      // @ts-ignore
       .add(routes, controller)
     if (success) return this
     else throw new Error('handler not added')
@@ -26,10 +29,12 @@ class Router {
     const routes = splitRoute(route)
     const [node, params] = routers
       .get(this.id)
+      // @ts-ignore
       .search([method, ...routes])
     // console.log([method, ...routes])
-    if (node) {
+    if (node && Controller.isPrototypeOf(node.controller)) {
       const CurrentController = node.controller
+      // @ts-ignore
       const controller = new CurrentController(ctx.req, ctx.res)
       controller.exec(params)
     } else {
@@ -40,9 +45,9 @@ class Router {
     }
   }
 
-  setNotFoundHandler (handler) {
-    if (handler) {
-      notFoundHandlers.set(this.id, handler)
+  setNotFoundHandler (controller) {
+    if (controller && Controller.isPrototypeOf(controller)) {
+      notFoundHandlers.set(this.id, controller)
     }
     return this
   }
